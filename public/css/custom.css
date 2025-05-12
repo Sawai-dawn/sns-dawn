@@ -1,0 +1,50 @@
+.nav-link {
+  color: #FFFFFF;
+}
+
+body {
+  background: #f8f9fa;
+  /* 通常ページの背景（デフォルトカラー） */
+}
+
+body.login,
+body.register {
+  background: linear-gradient(to bottom, #3E4865 60%, #D05E45 100%);
+}
+
+.card {
+  /*背景色を指定の色と不透明度に変更、文字色を白に変更*/
+  height: auto;
+  background: rgba(108, 108, 108, 0.1);
+  color: #FFFFFF;
+  padding: 20px;
+}
+
+.btn-primary {
+  /*背景色を指定の色に変更、文字色を白に変更*/
+  background: #5A659E;
+  color: #FFFFFF;
+}
+
+.btn-link {
+  /*文字色を白に変更、下線をなくす*/
+  color: #FFFFFF;
+  text-decoration: none;
+  display: block;
+  /* ブロック要素にして中央揃えを簡単に */
+  text-align: center;
+  /* テキストを中央揃え */
+  margin-top: 2em;
+  /* 上の要素から文字1つ分くらいの余白を追加 */
+}
+
+
+.LogoImage {
+  width: 200px;
+  height: 100px;
+}
+
+.LoginLogoImage {
+  width: 300px;
+  height: 150px;
+}
