@@ -1,15 +1,20 @@
-.nav-link {
-  color: #FFFFFF;
-}
-
 body {
-  background: #f8f9fa;
+  background-color: #f8f9fa;
   /* 通常ページの背景（デフォルトカラー） */
 }
 
 body.login,
 body.register {
   background: linear-gradient(to bottom, #3E4865 60%, #D05E45 100%);
+}
+
+.navbar {
+  background-color: #3E4865;
+}
+
+.nav-link,
+.nav-link.active {
+  color: #ffffff !important;
 }
 
 .card {
