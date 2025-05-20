@@ -4,11 +4,25 @@
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
   <div class='container'>
-    <h1 class='page-header'>Laravelを使った投稿機能の実装</h1>
+    <h1 class='page-header'></h1>
+        <form action="/post/create" method="post">
+        @csrf
+      <div class="form-group">
+      <img src="{{ asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 60px;">
+      <input type="text" name="newPost" class="form-control" placeholder="何をつぶやこうか…？">
+      </div>
+      <div class="pull-right submit-btn">
+        <button type="submit" class="btn btn-success"></button>
+      </div>
+    </form>
+
+    <!--投稿ページへの遷移(この画面で投稿するため不要に)
     <p class="pull-right">
       <a class="btn btn-success" href="post/create-form">投稿する</a>
     </p>
-    <h2 class='page-header'>投稿一覧</h2>
+    -->
+
+    <h2 class='page-header'></h2>
     <table class='table table-hover'>
       <tr>
         <th>投稿No</th>
@@ -26,12 +40,12 @@
     <td>{{ $post->created_at }}</td>
     <!-- ↓　ここから追加してください -->
     <td>
-      <a class="btn btn-primary" href="/post/{{ $post->id }}/update-form">更新</a>
+      <a class="btn btn-primary" href="/post/{{ $post->id }}/update-form"></a>
     </td>
     <!-- ↑　ここまで追加してください -->
          <!-- ↓　ここから下を追加してください -->
     <td>
-    <form action="/post/delete" method="post" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+    <form action="/post/delete" method="post" onclick="return confirm('この呟きを削除します。よろしいでしょうか？')">
         @method('DELETE')
         @csrf
         <input type="hidden" name="id" value="{{ $post->id }}">

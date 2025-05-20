@@ -43,6 +43,58 @@ body.register {
   /* 上の要素から文字1つ分くらいの余白を追加 */
 }
 
+.btn-success {
+  background-color: transparent !important;
+  /* 背景を完全に透明にする */
+  border: none;
+  /* ボーダーも不要なら削除 */
+  background-image: url("/images/post.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* 画像が繰り返されないようにする */
+  background-position: center;
+  /* 中央に配置 */
+  width: 100px;
+  /* 画像の幅を設定 */
+  height: 40px;
+  /* 画像の高さを設定 */
+  cursor: pointer;
+  float: right;
+  margin-top: 2em;
+  /* 上の要素から文字1つ分くらいの余白を追加 */
+  margin-bottom: 2em;
+  /* 下の要素から文字1つ分くらいの余白を追加 */
+}
+
+.btn-primary {
+  background-color: transparent !important;
+  /* 背景を完全に透明にする */
+  border: none;
+  /* ボーダーも不要なら削除 */
+  background-image: url("/images/edit.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* 画像が繰り返されないようにする */
+  background-position: center;
+  /* 中央に配置 */
+  width: 100px;
+  /* 画像の幅を設定 */
+  height: 40px;
+  /* 画像の高さを設定 */
+  cursor: pointer;
+  float: right;
+  margin-top: 2em;
+  /* 上の要素から文字1つ分くらいの余白を追加 */
+}
+
+.form-group {
+  display: flex;
+  /* 横並びに配置 */
+  align-items: TOP;
+  /* 垂直方向の中央揃え */
+  gap: 10px;
+  /* 画像と入力フォームの間隔 */
+}
 
 .LogoImage {
   width: 200px;

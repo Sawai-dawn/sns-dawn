@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
   <div class='container'>
     <h1 class='page-header'>Laravelを使った投稿機能の実装</h1>
