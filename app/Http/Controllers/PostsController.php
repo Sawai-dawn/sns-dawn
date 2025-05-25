@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth; // 追加
 
 
 class PostsController extends Controller
@@ -23,7 +24,10 @@ class PostsController extends Controller
 
         public function index() //投稿一覧
         {
-            $posts = DB::table('posts')->get();
+            $posts = DB::table('posts')
+                ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合
+                ->select('posts.*', 'users.name as user_name') // ユーザー名を取得
+                ->get();
             return view('posts.index', ['posts' => $posts]);
         }
 
@@ -36,7 +40,7 @@ class PostsController extends Controller
         {
             $post = $request->input('newPost');
             DB::table('posts')->insert([
-                'user_id' => 1,
+                'user_id' => auth()->id(), // 現在ログインしているユーザーのIDを取得,
                 'post' => $post,
                 'created_at' => now(),
             ]);

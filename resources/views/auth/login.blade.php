@@ -42,9 +42,9 @@
                         </div>
 
                         <div class="mb-0 text-center">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('LOGIN') }}
+                            <div class="col-md-8 offset-md-5">
+                                <button type="submit" class="btn btn-login">
+                                    {{ __('ＬＯＧＩＮ') }}
                                 </button>
                             </div>
 
