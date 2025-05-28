@@ -82,9 +82,39 @@
         </nav>
         @endif
 
-        <main class="py-4">
-            @yield('content')
+        <main class="layout-container">
+            <div class="content py-4">
+                @yield('content')
+            </div>
+
+            @if (!in_array(Route::currentRouteName(), ['login', 'register']))
+            <aside class="sidebar">
+                <a>{{ Auth::user()->name }}さんの</a>
+                <div class="follow-num">
+                   <span class="left">フォロー数</span>
+                   <span class="right">xx名</span>
+                </div>
+                <button type="submit" class="btn btn-follow">
+                    {{ __('フォローリスト') }}
+                </button>
+
+                <div class="follow-num">
+                   <span class="left">フォロワー数</span>
+                   <span class="right">xxx名</span>
+                </div>
+                <button type="submit" class="btn btn-follow">
+                    {{ __('フォロワーリスト') }}
+                </button>
+
+                <hr>
+                <div>
+                <button type="submit" class="btn btn-search">
+                    {{ __('ユーザー検索') }}
+                </button>
+                </div>
+            </aside>
         </main>
+        @endif
     </div>
 </body>
 </html>

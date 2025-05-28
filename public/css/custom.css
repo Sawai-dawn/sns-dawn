@@ -12,9 +12,44 @@ body.register {
   background-color: #3E4865;
 }
 
+.navbar .container {
+  max-width: 95%;
+  /* 画面幅を95%に設定し、余白を少し減らす */
+}
+
 .nav-link,
 .nav-link.active {
   color: #ffffff !important;
+}
+
+.layout-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  /* 子要素の高さを統一 */
+}
+
+.content.py-4 {
+  width: 80%;
+  /* 投稿一覧の幅 */
+  min-height: 100vh;
+  /* ビューポート全体の高さを確保 */
+  margin-left: 100px;
+  /* 左側に100pxの余白を追加 */
+}
+
+.sidebar {
+  width: 20%;
+  /* サイドバーの幅 */
+  border-left: 2px solid #ccc;
+  /* 左側の区切り線を追加 */
+  padding: 20px;
+}
+
+.sidebar hr {
+  margin-left: -20px;
+  margin-right: -20px;
+  /* sidebarのpaddingを左右のみ相殺する */
 }
 
 .card {
@@ -75,8 +110,8 @@ body.register {
   background-size: contain;
   background-repeat: no-repeat;
   /* 画像が繰り返されないようにする */
-  background-position: center;
-  /* 中央に配置 */
+  background-position: right;
+  /* 右に配置 */
   width: 100px;
   /* 画像の幅を設定 */
   height: 40px;
@@ -87,6 +122,55 @@ body.register {
   /* 上の要素から文字1つ分くらいの余白を追加 */
 }
 
+.btn-danger {
+  background-color: transparent !important;
+  /* 背景を完全に透明にする */
+  border: none;
+  /* ボーダーも不要なら削除 */
+  background-image: url("/images/trash.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* 画像が繰り返されないようにする */
+  background-position: left;
+  /* 左に配置 */
+  width: 100px;
+  /* 画像の幅を設定 */
+  height: 40px;
+  /* 画像の高さを設定 */
+  cursor: pointer;
+  float: right;
+  margin-top: 2em;
+  /* 上の要素から文字1つ分くらいの余白を追加 */
+}
+
+.btn-danger:hover {
+  background-image: url("/images/trash_h.png");
+  /* ホバー時の画像 */
+}
+
+.btn-follow {
+  display: block;
+  /* ボタンをブロック要素に */
+  width: 150px;
+  margin-left: auto;
+  /* 左側の余白を自動調整し、右端へ */
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  /* 右と上下それぞれに余白を追加 */
+}
+
+.btn-search {
+  display: block;
+  /* ボタンをブロック要素に */
+  width: 150px;
+  margin: 0 auto;
+  /* 上下はそのまま、左右を自動調整 */
+  margin-top: 5px;
+  margin-bottom: 20px;
+  /* 上下それぞれに余白を追加 */
+}
+
 .form-group {
   display: flex;
   /* 横並びに配置 */
@@ -94,6 +178,20 @@ body.register {
   /* 垂直方向の中央揃え */
   gap: 10px;
   /* 画像と入力フォームの間隔 */
+}
+
+.follow-num {
+  display: flex;
+  justify-content: space-between;
+  /* 左右に配置 */
+}
+
+.follow-num.left {
+  text-align: left;
+}
+
+.follow-num.right {
+  text-align: right;
 }
 
 .LogoImage {

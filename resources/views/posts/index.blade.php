@@ -55,7 +55,7 @@
         @method('DELETE')
         @csrf
         <input type="hidden" name="id" value="{{ $post->id }}">
-        <button type="submit" class="btn btn-danger">削除</button>
+        <button type="submit" class="btn btn-danger"></button>
       </form>
       @endif
     </td>
