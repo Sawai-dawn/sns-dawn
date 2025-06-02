@@ -77,4 +77,13 @@ class PostsController extends Controller
             return redirect('/index');
         }
 
+        public function myProfile() //投稿一覧
+        {
+            $posts = DB::table('posts')
+                ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合
+                ->select('posts.*', 'users.name as user_name') // ユーザー名を取得
+                ->get();
+            return view('posts.myProfile', ['posts' => $posts]);
+        }
+
 }

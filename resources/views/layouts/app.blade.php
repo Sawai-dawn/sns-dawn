@@ -64,6 +64,9 @@
                                     <a class="dropdown-item" href="{{ url('/index') }}"> {{ __('HOME') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ url('/my-profile') }}"> {{ __('プロフィール編集画面') }}
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

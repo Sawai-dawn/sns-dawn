@@ -30,4 +30,5 @@ Route::controller(PostsController::class)->group(function() {
     Route::get('post/{id}/update-form', 'updateForm');
     Route::put('/post/update', 'update');
     Route::delete('/post/delete', 'delete');
+    Route::get('/my-profile', 'myProfile');
 });

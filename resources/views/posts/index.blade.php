@@ -19,6 +19,8 @@
       </div>
     </form>
 
+
+
     <!--投稿ページへの遷移(この画面で投稿するため不要に)
     <p class="pull-right">
       <a class="btn btn-success" href="post/create-form">投稿する</a>

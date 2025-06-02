@@ -171,6 +171,26 @@ body.register {
   /* 上下それぞれに余白を追加 */
 }
 
+.btn-update {
+  width: 150px;
+  text-align: center;
+  background: #81987c;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-update:hover {
+  width: 150px;
+  text-align: center;
+  background: #81987c;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
 .form-group {
   display: flex;
   /* 横並びに配置 */
@@ -192,6 +212,56 @@ body.register {
 
 .follow-num.right {
   text-align: right;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  /* 横並びに変更 */
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.profile-header {
+  flex-shrink: 0;
+  /* アイコンが縮まないようにする */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.label {
+  width: 120px;
+  font-size: 24px;
+  color: #6c6c6c;
+}
+
+.value {
+  margin-left: 80px;
+  font-size: 24px;
+  color: #3e4865;
+}
+
+.div-line {
+  height: 6px;
+  background-color: #ccc;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: -150px;
+  margin-right: -75px;
 }
 
 .LogoImage {
