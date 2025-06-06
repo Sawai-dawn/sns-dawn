@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController; //追記
+use App\Http\Controllers\UsersController; //追記
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,8 @@ Route::controller(PostsController::class)->group(function() {
     Route::put('/post/update', 'update');
     Route::delete('/post/delete', 'delete');
     Route::get('/my-profile', 'myProfile');
+});
+
+Route::controller(UsersController::class)->group(function() {
+    Route::get('/update-profile', 'updateProfile')->name('updateProfile');
 });

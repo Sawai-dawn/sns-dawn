@@ -24,7 +24,7 @@
           <span class="value">{{ Auth::user()->bio }}</span>
         </div>
         <div class="profile-item">
-          <button type="submit" class="btn btn-update">変更画面へ</button>
+          <a type="submit" class="btn btn-update" href="{{ route('updateProfile') }}">変更画面へ</a>
         </div>
       </div>
     </div>

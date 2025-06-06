@@ -77,7 +77,7 @@ class PostsController extends Controller
             return redirect('/index');
         }
 
-        public function myProfile() //投稿一覧
+        public function myProfile() //プロフィール画面
         {
             $posts = DB::table('posts')
                 ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合

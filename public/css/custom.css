@@ -191,6 +191,32 @@ body.register {
   cursor: pointer;
 }
 
+.btn-upload {
+  color: #6c6c6c;
+  /*文字色を白に変更、下線をなくす*/
+  text-decoration: none;
+  text-align: center;
+  /* テキストを中央揃え */
+  margin: 2em;
+  /* 上の要素から文字1つ分くらいの余白を追加 */
+  background: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btn-upload:hover {
+  color: #6c6c6c;
+  /*文字色を白に変更、下線をなくす*/
+  text-decoration: none;
+  text-align: center;
+  /* テキストを中央揃え */
+  margin: 2em;
+  /* 上の要素から文字1つ分くらいの余白を追加 */
+  background: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .form-group {
   display: flex;
   /* 横並びに配置 */
@@ -239,20 +265,45 @@ body.register {
 
 .profile-item {
   display: flex;
+  align-items: flex-start;
+  /* 子要素を上に配置 */
+  padding: 5px 0;
+}
+
+.profile-item.right {
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
   padding: 5px 0;
 }
 
 .label {
-  width: 120px;
+  width: 240px;
   font-size: 24px;
   color: #6c6c6c;
 }
 
 .value {
+  width: 480px;
   margin-left: 80px;
   font-size: 24px;
   color: #3e4865;
+}
+
+.value.form-control {
+  background: rgba(108, 108, 108, 0.1);
+  border: none;
+  /* ボーダーも不要なら削除 */
+  border-bottom: 2px solid #3e4865;
+  /* 下線を追加 */
+  color: #3e4865;
+  display: flex;
+  justify-content: center;
+  /* 水平方向の中央揃え */
+  align-items: center;
+  /* 垂直方向の中央揃え */
+  height: 100%;
+  /* 必要なら高さを調整 */
 }
 
 .div-line {
