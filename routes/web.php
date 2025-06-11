@@ -36,4 +36,5 @@ Route::controller(PostsController::class)->group(function() {
 
 Route::controller(UsersController::class)->group(function() {
     Route::get('/update-profile', 'updateProfile')->name('updateProfile');
+    Route::post('/user/update', 'update')->name('user.update');
 });

@@ -8,7 +8,7 @@
       @method('PUT')
       @csrf
       <div class="form-group">
-      <img src="{{ asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 60px;">
+      <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 60px;">
         <input type="hidden" name="id" value="{{$post->id}}">
         <textarea name="upPost" class="form-control" required rows="8">{{ old('upPost', $post->post) }}</textarea>
       </div>

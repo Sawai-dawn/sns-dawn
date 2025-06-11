@@ -7,7 +7,7 @@
     <h1 class='page-header'></h1>
     <div class="profile">
       <div class="profile-header">
-      <img src="{{ asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 60px;">
+      <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 60px;">
       </div>
 
       <div class="profile-info">

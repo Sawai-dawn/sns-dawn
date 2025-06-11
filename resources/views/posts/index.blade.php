@@ -8,7 +8,7 @@
         <form action="/post/create" method="post">
         @csrf
       <div class="form-group">
-      <img src="{{ asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 60px;">
+      <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 60px;">
       <textarea name="newPost" class="form-control" placeholder="何をつぶやこうか…？" rows="4"></textarea>
       <!--改行を認識できるようにtextareaに変更
       <input type="text" name="newPost" class="form-control" placeholder="何をつぶやこうか…？">
@@ -31,6 +31,7 @@
     <table class='table table-hover'>
       <tr>
         <th>投稿No</th>
+        <th>投稿者画像</th>
         <th>投稿者</th>
         <th>投稿内容</th>
         <th>投稿日時</th>
@@ -40,6 +41,9 @@
   @foreach ($posts as $post)
   <tr>
     <td>{{ $post->id }}</td>
+    <td>
+      <img src="{{ $post->icon_image ? asset('storage/' . $post->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 40px;">
+    </td>
     <td>{{ $post->user_name }}</td>
     <td>{!! nl2br(e($post->post)) !!}</td>
     <td>{{ $post->created_at }}</td>
