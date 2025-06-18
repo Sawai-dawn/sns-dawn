@@ -57,14 +57,14 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
-                                    <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 30px;">
+                                    <img src="{{ Auth::user()->icon_image ? asset('storage/' . Auth::user()->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 30px;">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/index') }}"> {{ __('HOME') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ url('/my-profile') }}"> {{ __('プロフィール編集画面') }}
+                                    <a class="dropdown-item" href="{{ route('myProfile') }}"> {{ __('プロフィール編集画面') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -97,7 +97,7 @@
                    <span class="left">フォロー数</span>
                    <span class="right">xx名</span>
                 </div>
-                <button type="submit" class="btn btn-follow">
+                <button type="submit" class="btn btn-followlist">
                     {{ __('フォローリスト') }}
                 </button>
 
@@ -105,15 +105,15 @@
                    <span class="left">フォロワー数</span>
                    <span class="right">xxx名</span>
                 </div>
-                <button type="submit" class="btn btn-follow">
+                <button type="submit" class="btn btn-followlist">
                     {{ __('フォロワーリスト') }}
                 </button>
 
                 <hr>
                 <div>
-                <button type="submit" class="btn btn-search">
+                <a class="btn btn-usersearch" href="{{ route('usersSearch') }}">
                     {{ __('ユーザー検索') }}
-                </button>
+                </a>
                 </div>
             </aside>
         </main>

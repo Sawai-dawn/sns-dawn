@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth; // 追加
+use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -50,5 +51,13 @@ class UsersController extends Controller
         $user->save(); // データベースに保存
 
         return redirect()->route('updateProfile')->with('success', 'プロフィールが更新されました！');
+    }
+
+    public function usersSearch() //ユーザー検索画面
+    {
+        $users = User::where('id', '!=', Auth::id())->get(); // ログインユーザー以外の情報を取得
+        $authUser = Auth::user(); // ログインユーザー情報
+
+        return view('users.usersSearch', compact('users')); // `users.usersSearch` ビューへ渡す
     }
 }

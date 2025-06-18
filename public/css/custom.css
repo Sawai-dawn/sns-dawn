@@ -60,6 +60,14 @@ body.register {
   padding: 20px;
 }
 
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* 入力欄とボタンの距離 */
+  margin-bottom: 1em;
+}
+
 .btn-login {
   /*背景色を指定の色に変更、文字色を白に変更*/
   background: #5A659E;
@@ -148,7 +156,27 @@ body.register {
   /* ホバー時の画像 */
 }
 
-.btn-follow {
+.btn-search {
+  background-color: transparent !important;
+  /* 背景を完全に透明にする */
+  border: none;
+  /* ボーダーも不要なら削除 */
+  background-image: url("/images/search.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* 画像が繰り返されないようにする */
+  background-position: center;
+  /* 中央に配置 */
+  width: 100px;
+  /* 画像の幅を設定 */
+  height: 40px;
+  /* 画像の高さを設定 */
+  cursor: pointer;
+  float: right;
+
+}
+
+.btn-followlist {
   display: block;
   /* ボタンをブロック要素に */
   width: 150px;
@@ -160,7 +188,19 @@ body.register {
   /* 右と上下それぞれに余白を追加 */
 }
 
-.btn-search {
+.btn-follow {
+  display: block;
+  /* ボタンをブロック要素に */
+  background: #5A659E;
+  width: 150px;
+  margin-right: auto;
+  /* 右側の余白を自動調整し、左端へ */
+  margin-top: 5px;
+  margin-bottom: 20px;
+  /* 右と上下それぞれに余白を追加 */
+}
+
+.btn-usersearch {
   display: block;
   /* ボタンをブロック要素に */
   width: 150px;
@@ -283,14 +323,21 @@ body.register {
   color: #6c6c6c;
 }
 
-.value {
+.profile-item .value {
   width: 480px;
   margin-left: 80px;
   font-size: 24px;
   color: #3e4865;
 }
 
-.value.form-control {
+.value.username {
+  width: 480px;
+  margin-left: 20px;
+  font-size: 24px;
+  color: #6c6c6c;
+}
+
+.profile-item .value.form-control {
   background: rgba(108, 108, 108, 0.1);
   border: none;
   /* ボーダーも不要なら削除 */
@@ -306,6 +353,27 @@ body.register {
   /* 必要なら高さを調整 */
 }
 
+.search .value {
+  width: 480px;
+  font-size: 24px;
+  color: #3e4865;
+}
+
+.search .value.form-control {
+  color: #3e4865;
+  display: flex;
+  justify-content: flex-start;
+  /* 水平方向の中央揃え */
+  align-items: center;
+  /* 垂直方向の中央揃え */
+  height: 100%;
+  /* 必要なら高さを調整 */
+}
+
+.search .value.form-control::placeholder {
+  color: rgba(108, 108, 108, 0.3);
+}
+
 .div-line {
   height: 6px;
   background-color: #ccc;
@@ -313,6 +381,21 @@ body.register {
   margin-bottom: 20px;
   margin-left: -150px;
   margin-right: -75px;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+}
+
+.user-icon {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .LogoImage {
