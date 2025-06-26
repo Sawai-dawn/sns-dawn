@@ -53,11 +53,17 @@ class UsersController extends Controller
         return redirect()->route('updateProfile')->with('success', 'プロフィールが更新されました！');
     }
 
-    public function usersSearch() //ユーザー検索画面
+    public function usersSearch(Request $request) // ユーザー検索画面
     {
-        $users = User::where('id', '!=', Auth::id())->get(); // ログインユーザー以外の情報を取得
-        $authUser = Auth::user(); // ログインユーザー情報
+        $keyword = $request->input('keyword'); // 入力された検索ワード
+        $authUser = Auth::user();
 
-        return view('users.usersSearch', compact('users')); // `users.usersSearch` ビューへ渡す
+        $users = User::where('id', '!=', $authUser->id) // ログインユーザー以外の情報を取得,キーワードがあればそれを含むやつ
+                    ->when($keyword, function ($query, $keyword) {
+                        return $query->where('name', 'like', "%{$keyword}%");
+                    })
+                    ->get();
+
+        return view('users.usersSearch', compact('users', 'authUser', 'keyword')); // `users.usersSearch` ビューへ渡す
     }
 }

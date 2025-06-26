@@ -4,12 +4,13 @@
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
   <div class='container'>
-    <div class="search">
-      <input type="text" name="search" class="value form-control" placeholder="ユーザー名">
-      <a class="btn btn-search" ></a>
-    </div>
+    <form method="GET" action="{{ route('usersSearch') }}" class="search">
+      <input type="text" name="keyword" value="{{ request('keyword') }}" class="value form-control" placeholder="ユーザー名">
+      <button type="submit" class="btn btn-search"></button>
+    </form>
 
     <div class="div-line"></div>
+
 
     <div class="all-users">
       @foreach ($users as $user)
