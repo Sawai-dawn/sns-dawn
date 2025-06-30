@@ -14,11 +14,28 @@
 
     <div class="all-users">
       @foreach ($users as $user)
-      <div class="user-row">
-      <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="user-icon">
-      <span class="value username">{{ $user->name }}</span>
-      <button type="submit" class="btn btn-follow">フォローする</button>
-    </div>
+        <div class="user-row">
+        <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="user-icon">
+        <span class="value username">{{ $user->name }}</span>
+
+        @if (Auth::user()->followings->contains($user->id))
+        <!-- ログインユーザーがこのユーザーをフォロー済みなら -->
+
+          <form action="{{ route('unfollow', ['id' => $user->id]) }}" method="POST">
+          @csrf
+          <button type="submit" class="btn btn-unfollow">フォローをはずす</button>
+          </form>
+
+        @else
+        <!-- フォローしていない場合 -->
+
+          <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
+          @csrf
+          <button type="submit" class="btn btn-follow">フォローする</button>
+          </form>
+
+        @endif
+        </div>
       @endforeach
     </div>
 

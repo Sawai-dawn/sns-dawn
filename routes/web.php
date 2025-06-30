@@ -38,4 +38,6 @@ Route::controller(UsersController::class)->group(function() {
     Route::get('/update-profile', 'updateProfile')->name('updateProfile');
     Route::post('/user/update', 'update')->name('user.update');
     Route::get('/users-search', 'usersSearch')->name('usersSearch');
+    Route::post('/follow/{id}', 'follow')->name('follow');
+    Route::post('/unfollow/{id}', 'unfollow')->name('unfollow');
 });

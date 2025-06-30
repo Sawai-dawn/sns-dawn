@@ -66,4 +66,40 @@ class UsersController extends Controller
 
         return view('users.usersSearch', compact('users', 'authUser', 'keyword')); // `users.usersSearch` ビューへ渡す
     }
+
+    public function followings() //自分がフォローしてる一覧
+    {
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'followed_id');
+    }
+
+    public function followers() //自分をフォローしている一覧
+    {
+        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'follower_id');
+    }
+
+    public function follow($id) //フォロー機能
+    {
+        $user = Auth::user(); // ログインユーザー
+        $target = User::findOrFail($id); // フォロー対象のユーザー
+
+        // 重複チェック（すでにフォローしていなければ追加）
+        if (!$user->followings()->where('followed_id', $target->id)->exists()) {
+            $user->followings()->attach($target->id,['created_at' => now(), 'updated_at' => now()]);
+        }
+
+        return back(); // 元の画面に戻る
+    }
+
+    public function unfollow($id) //アンフォロー機能
+    {
+        $user = Auth::user(); // ログインユーザー
+        $target = User::findOrFail($id); // フォロー解除対象のユーザー
+
+        // フォロー関係があれば解除
+        if ($user->followings()->where('followed_id', $target->id)->exists()) {
+            $user->followings()->detach($target->id);
+        }
+
+        return back(); // 元の画面へ戻す
+    }
 }

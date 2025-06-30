@@ -196,7 +196,33 @@ body.register {
   margin-right: auto;
   /* 右側の余白を自動調整し、左端へ */
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  /* 右と上下それぞれに余白を追加 */
+}
+
+.btn-unfollow {
+  display: block;
+  /* ボタンをブロック要素に */
+  background: #AD5B59;
+  color: #FFFFFF;
+  width: 150px;
+  margin-right: auto;
+  /* 右側の余白を自動調整し、左端へ */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  /* 右と上下それぞれに余白を追加 */
+}
+
+.btn-unfollow:hover {
+  display: block;
+  /* ボタンをブロック要素に */
+  background: #AD5B59;
+  color: #FFFFFF;
+  width: 150px;
+  margin-right: auto;
+  /* 右側の余白を自動調整し、左端へ */
+  margin-top: 5px;
+  margin-bottom: 10px;
   /* 右と上下それぞれに余白を追加 */
 }
 
@@ -379,14 +405,14 @@ body.register {
   background-color: #ccc;
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: -150px;
-  margin-right: -75px;
+  margin-left: -20%;
+  margin-right: 0%;
 }
 
 .user-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   gap: 12px;
   padding: 10px 16px;
 }
