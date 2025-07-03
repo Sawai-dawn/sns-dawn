@@ -95,19 +95,19 @@
                 <a>{{ Auth::user()->name }}さんの</a>
                 <div class="follow-num">
                    <span class="left">フォロー数</span>
-                   <span class="right">xx名</span>
+                   <span class="right">{{ Auth::user()->followings->count() }}名</span>
                 </div>
-                <button type="submit" class="btn btn-followlist">
+                <a class="btn btn-followlist" href="{{ route('followList') }}">
                     {{ __('フォローリスト') }}
-                </button>
+                </a>
 
                 <div class="follow-num">
                    <span class="left">フォロワー数</span>
-                   <span class="right">xxx名</span>
+                   <span class="right">{{ Auth::user()->followers->count() }}名</span>
                 </div>
-                <button type="submit" class="btn btn-followlist">
+                <a class="btn btn-followlist" href="{{ route('followerList') }}">
                     {{ __('フォロワーリスト') }}
-                </button>
+                </a>
 
                 <hr>
                 <div>

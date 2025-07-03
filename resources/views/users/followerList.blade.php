@@ -3,31 +3,20 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
+  <h2 style="color: #6c6c6c;">Follower list</h2>
   <div class='container'>
-    <h1 class='page-header'></h1>
-        <form action="/post/create" method="post">
-        @csrf
-      <div class="form-group">
-      <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 60px;">
-      <textarea name="newPost" class="form-control" placeholder="何をつぶやこうか…？" rows="4"></textarea>
-      <!--改行を認識できるようにtextareaに変更
-      <input type="text" name="newPost" class="form-control" placeholder="何をつぶやこうか…？">
--->
-      </div>
-      <div class="pull-right submit-btn">
-        <button type="submit" class="btn btn-success"></button>
-      </div>
-    </form>
 
 
+    <div class="user-icon-list">
+      @forelse ($followings as $follower)
+      <img src="{{ $follower->icon_image ? asset('storage/' . $follower->icon_image) : asset('images/dawn.png') }}" class="user-icon" alt="アイコン">
 
-    <!--投稿ページへの遷移(この画面で投稿するため不要に)
-    <p class="pull-right">
-      <a class="btn btn-success" href="post/create-form">投稿する</a>
-    </p>
-    -->
+      @empty
+        <p>フォローしているユーザーはいません。</p>
 
-    <h2 class='page-header'></h2>
+      @endforelse
+
+    </div>
 
     <table class='table table-hover'>
       <tr>
@@ -76,4 +65,4 @@
     </table>
   </div>
 
-  @endsection
+@endsection

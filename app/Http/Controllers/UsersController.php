@@ -102,4 +102,30 @@ class UsersController extends Controller
 
         return back(); // 元の画面へ戻す
     }
+
+    public function followList()
+    {
+        $user = Auth::user(); // ログイン中のユーザー情報を取得
+        $followings = $user->followings; // フォローしてるユーザー一覧
+
+        $posts = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合
+            ->select('posts.*', 'users.name as user_name', 'users.icon_image') // ユーザー名とユーザー画像を取得
+            ->get();
+
+        return view('users.followList', compact('followings','posts')); // `$followings`と$posts をビューに渡す
+    }
+
+    public function followerList()
+    {
+        $user = Auth::user(); // ログイン中のユーザー情報を取得
+        $followings = $user->followers; // フォローしてくれているユーザー一覧
+
+        $posts = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合
+            ->select('posts.*', 'users.name as user_name', 'users.icon_image') // ユーザー名とユーザー画像を取得
+            ->get();
+
+        return view('users.followerList', compact('followings','posts')); // `$followings`と$posts をビューに渡す
+    }
 }

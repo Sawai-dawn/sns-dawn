@@ -40,4 +40,6 @@ Route::controller(UsersController::class)->group(function() {
     Route::get('/users-search', 'usersSearch')->name('usersSearch');
     Route::post('/follow/{id}', 'follow')->name('follow');
     Route::post('/unfollow/{id}', 'unfollow')->name('unfollow');
+    Route::get('/follow-list', 'followList')->name('followList');
+    Route::get('/follower-list', 'followerList')->name('followerList');
 });

@@ -417,6 +417,15 @@ body.register {
   padding: 10px 16px;
 }
 
+.user-icon-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* 折り返し対応（スマホでも自然に） */
+  gap: 12px;
+  /* アイコン間の余白 */
+  padding: 8px;
+}
+
 .user-icon {
   height: 60px;
   width: 60px;
