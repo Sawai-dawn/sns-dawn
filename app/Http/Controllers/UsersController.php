@@ -103,7 +103,7 @@ class UsersController extends Controller
         return back(); // 元の画面へ戻す
     }
 
-    public function followList()
+    public function followList() //フォローリスト画面
     {
         $user = Auth::user(); // ログイン中のユーザー情報を取得
         $followings = $user->followings; // フォローしてるユーザー一覧
@@ -116,7 +116,7 @@ class UsersController extends Controller
         return view('users.followList', compact('followings','posts')); // `$followings`と$posts をビューに渡す
     }
 
-    public function followerList()
+    public function followerList() //フォロワーリスト画面
     {
         $user = Auth::user(); // ログイン中のユーザー情報を取得
         $followings = $user->followers; // フォローしてくれているユーザー一覧
@@ -127,5 +127,13 @@ class UsersController extends Controller
             ->get();
 
         return view('users.followerList', compact('followings','posts')); // `$followings`と$posts をビューに渡す
+    }
+
+    public function showProfile($id) //ユーザープロフィール画面
+    {
+        $user = User::findOrFail($id); // プロフィール対象のユーザー
+        $posts = $user->posts()->latest()->get(); // 対象ユーザーの投稿一覧
+
+        return view('users.showProfile', compact('user', 'posts')); // `$user`と$posts をビューに渡す
     }
 }

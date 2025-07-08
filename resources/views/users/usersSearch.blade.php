@@ -15,8 +15,10 @@
     <div class="all-users">
       @foreach ($users as $user)
         <div class="user-row">
-        <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="user-icon">
-        <span class="value username">{{ $user->name }}</span>
+          <a href="{{ route('users.profile', ['id' => $user->id]) }}">
+            <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="user-icon">
+          </a>
+          <span class="value username">{{ $user->name }}</span>
 
         @if (Auth::user()->followings->contains($user->id))
         <!-- ログインユーザーがこのユーザーをフォロー済みなら -->

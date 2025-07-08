@@ -42,4 +42,5 @@ Route::controller(UsersController::class)->group(function() {
     Route::post('/unfollow/{id}', 'unfollow')->name('unfollow');
     Route::get('/follow-list', 'followList')->name('followList');
     Route::get('/follower-list', 'followerList')->name('followerList');
+    Route::get('/users/{id}', 'showProfile')->name('users.profile');
 });

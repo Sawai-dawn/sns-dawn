@@ -356,6 +356,69 @@ body.register {
   color: #3e4865;
 }
 
+.profile-item2 {
+  display: flex;
+  align-items: flex-start;
+  /* 子要素を上に配置 */
+  padding: 5px 0;
+}
+
+.profile-item2 .label {
+  width: 180px;
+  font-size: 24px;
+  color: #6c6c6c;
+}
+
+.profile-item2 .value {
+  width: 480px;
+  font-size: 24px;
+  color: #6c6c6c;
+}
+
+.profile-item2 .value.bio {
+  width: 480px;
+  font-size: 16px;
+  color: #6c6c6c;
+}
+
+.profile-item2 .btn-follow {
+  display: block;
+  /* ボタンをブロック要素に */
+  background: #5A659E;
+  width: 150px;
+  margin-right: auto;
+  /* 右側の余白を自動調整し、左端へ */
+  margin-top: auto;
+  margin-bottom: 10px;
+  /* 右と上下それぞれに余白を追加 */
+}
+
+.profile-item2 .btn-unfollow {
+  display: block;
+  /* ボタンをブロック要素に */
+  background: #AD5B59;
+  color: #FFFFFF;
+  width: 150px;
+  margin-right: auto;
+  /* 右側の余白を自動調整し、左端へ */
+  margin-top: 50%;
+  margin-bottom: auto;
+  /* 右と上下それぞれに余白を追加 */
+}
+
+.profile-item2 .btn-unfollow:hover {
+  display: block;
+  /* ボタンをブロック要素に */
+  background: #AD5B59;
+  color: #FFFFFF;
+  width: 150px;
+  margin-right: auto;
+  /* 右側の余白を自動調整し、左端へ */
+  margin-top: 50%;
+  margin-bottom: auto;
+  /* 右と上下それぞれに余白を追加 */
+}
+
 .value.username {
   width: 480px;
   margin-left: 20px;
