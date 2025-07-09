@@ -4,10 +4,16 @@
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
   <div class='container'>
-    <form method="GET" action="{{ route('usersSearch') }}" class="search">
-      <input type="text" name="keyword" value="{{ request('keyword') }}" class="value form-control" placeholder="ユーザー名">
-      <button type="submit" class="btn btn-search"></button>
-    </form>
+    <div class="search-wrap">
+      <form method="GET" action="{{ route('usersSearch') }}" class="search-form">
+        <input type="text" name="keyword" value="{{ request('keyword') }}" class="value form-control" placeholder="ユーザー名">
+        <button type="submit" class="btn btn-search"></button>
+      </form>
+
+      @if (request('keyword'))
+        <div class="search-keyword">検索ワード：{{ request('keyword') }}</div>
+      @endif
+    </div>
 
     <div class="div-line"></div>
 

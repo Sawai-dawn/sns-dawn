@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth; // 追加
+use App\Models\Post;
 
 
 class PostsController extends Controller
@@ -25,11 +26,12 @@ class PostsController extends Controller
     public function index() //投稿一覧
     {
         $user = Auth::user(); // ログイン中のユーザー情報を取得
-        $posts = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合
-            ->select('posts.*', 'users.name as user_name', 'users.icon_image') // ユーザー名とユーザー画像を取得
-            ->get();
-        return view('posts.index', compact('user', 'posts')); // `$user`と$posts をビューに渡す
+
+        $posts = Post::with('user')  // 投稿に紐づくユーザーを取得
+                     ->orderBy('created_at', 'desc')
+                     ->get();
+
+        return view('posts.index', compact('user', 'posts'));
     }
 
     public function createForm() //投稿ページ
@@ -81,11 +83,10 @@ class PostsController extends Controller
     public function myProfile() //プロフィール画面
     {
         $user = Auth::user(); // ログイン中のユーザー情報を取得
-        $posts = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合
-            ->select('posts.*', 'users.name as user_name') // ユーザー名を取得
-            ->get();
-            return view('posts.myProfile', compact('user', 'posts')); // `$user`と$posts をビューに渡す
+        $posts = Post::where('user_id', $user->id)  // ログインユーザーの投稿のみを取得
+        ->orderBy('created_at', 'desc')
+        ->get();
+        return view('posts.myProfile', compact('user', 'posts')); // `$user`と$posts をビューに渡す
     }
 
 }

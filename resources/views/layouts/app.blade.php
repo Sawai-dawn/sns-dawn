@@ -85,12 +85,13 @@
         </nav>
         @endif
 
+        @if (!in_array(Route::currentRouteName(), ['login', 'register']))
         <main class="layout-container">
             <div class="content py-4">
                 @yield('content')
             </div>
 
-            @if (!in_array(Route::currentRouteName(), ['login', 'register']))
+
             <aside class="sidebar">
                 <a>{{ Auth::user()->name }}さんの</a>
                 <div class="follow-num">
@@ -116,6 +117,13 @@
                 </a>
                 </div>
             </aside>
+        </main>
+
+        @else
+        <main class="top-container">
+            <div class="content py-4">
+                @yield('content')
+            </div>
         </main>
         @endif
     </div>

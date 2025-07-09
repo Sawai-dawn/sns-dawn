@@ -32,44 +32,55 @@
     <div class="div-line"></div>
 
     <h2 class='page-header'></h2>
-    <table class='table table-hover'>
-      <tr>
-        <th>投稿No</th>
-        <th>投稿者</th>
-        <th>投稿内容</th>
-        <th>投稿日時</th>
-        <th></th>
-      </tr>
+    @foreach ($posts as $post)
 
-      @foreach ($posts as $post)
+      <div class="post-card">
+        <div class="post-header">
+          @if(auth()->id() === $post->user_id)
+            <a href="{{ route('myProfile') }}">
+              <img src="{{ $post->user->icon_image ? asset('storage/' . $post->user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="user-icon">
+            </a>
 
-      <tr>
-        <td>{{ $post->id }}</td>
-        <td>{{ $post->user_name }}</td>
-        <td>{!! nl2br(e($post->post)) !!}</td>
-        <td>{{ $post->created_at }}</td>
-        <td>
+          @else
+            <a href="{{ route('users.profile', ['id' => $post->user_id]) }}">
+              <img src="{{ $post->user->icon_image ? asset('storage/' . $post->user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="user-icon">
+            </a>
+
+          @endif
+
+          <div class="post-meta">
+            <span class="post-user">{{ $post->user->name }}</span>
+            <span class="post-date">{{ $post->created_at->format('Y-m-d H:i') }}</span>
+          </div>
+        </div>
+
+        <div class="post-content">
+          {!! nl2br(e($post->post)) !!}
+        </div>
+
+        <div class="post-actions">
           @if(auth()->id() === $post->user_id) <!-- ログインユーザーの投稿だけ表示 -->
-          <a class="btn btn-primary" href="/post/{{ $post->id }}/update-form"></a>
+            <a class="btn btn-primary" href="/post/{{ $post->id }}/update-form"></a>
           @endif
-        </td>
 
-        <td>
+          <!-- ↑　ここまで追加してください -->
+          <!-- ↓　ここから下を追加してください -->
           @if(auth()->id() === $post->user_id) <!-- ログインユーザーの投稿だけ削除ボタンを表示 -->
-          <form action="/post/delete" method="post" onclick="return confirm('この呟きを削除します。よろしいでしょうか？')">
-          @method('DELETE')
-          @csrf
-          <input type="hidden" name="id" value="{{ $post->id }}">
-          <button type="submit" class="btn btn-danger"></button>
-          </form>
+            <form action="/post/delete" method="post" onclick="return confirm('この呟きを削除します。よろしいでしょうか？')">
+              @method('DELETE')
+              @csrf
+              <input type="hidden" name="id" value="{{ $post->id }}">
+              <button type="submit" class="btn btn-danger"></button>
+            </form>
           @endif
-        </td>
+          <!-- ↑　ここまでを追加してください -->
+        </div>
 
-      </tr>
+        <div class="div-line2"></div>
+
+      </div>
 
       @endforeach
-
-    </table>
   </div>
 
   @endsection

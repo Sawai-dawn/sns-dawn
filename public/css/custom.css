@@ -29,19 +29,22 @@ body.register {
   /* 子要素の高さを統一 */
 }
 
-.content.py-4 {
+.top-container .content.py-4 {
+  min-height: 100vh;
+  /* ビューポート全体の高さを確保 */
+}
+
+.layout-container .content.py-4 {
   width: 80%;
   /* 投稿一覧の幅 */
   min-height: 100vh;
   /* ビューポート全体の高さを確保 */
-  margin-left: 100px;
-  /* 左側に100pxの余白を追加 */
 }
 
 .sidebar {
   width: 20%;
   /* サイドバーの幅 */
-  border-left: 2px solid #ccc;
+  border-left: 2px solid rgba(108, 108, 108, 0.2);
   /* 左側の区切り線を追加 */
   padding: 20px;
 }
@@ -66,6 +69,73 @@ body.register {
   gap: 8px;
   /* 入力欄とボタンの距離 */
   margin-bottom: 1em;
+}
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+.value.form-control {
+  height: 40px;
+  width: 480px;
+  font-size: 16px;
+}
+
+.search-keyword {
+  font-size: 24px;
+  color: #6c6c6c;
+}
+
+.post-card {
+  margin-left: 20px;
+}
+
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 2em;
+}
+
+.post-meta {
+  font-size: 16px;
+  color: #6c6c6c;
+  flex: 1;
+  margin-left: 8px;
+}
+
+.meta-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.post-date {
+  float: right;
+}
+
+.post-content {
+  font-size: 20px;
+  color: #6c6c6c;
+  line-height: 1.6;
+  margin-left: 80px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  clear: both;
 }
 
 .btn-login {
@@ -103,10 +173,8 @@ body.register {
   /* 画像の高さを設定 */
   cursor: pointer;
   float: right;
-  margin-top: 2em;
-  /* 上の要素から文字1つ分くらいの余白を追加 */
-  margin-bottom: 2em;
-  /* 下の要素から文字1つ分くらいの余白を追加 */
+  margin-top: auto;
+  /* 上の要素から余白を追加 */
 }
 
 .btn-primary {
@@ -126,8 +194,6 @@ body.register {
   /* 画像の高さを設定 */
   cursor: pointer;
   float: right;
-  margin-top: 2em;
-  /* 上の要素から文字1つ分くらいの余白を追加 */
 }
 
 .btn-danger {
@@ -147,8 +213,6 @@ body.register {
   /* 画像の高さを設定 */
   cursor: pointer;
   float: right;
-  margin-top: 2em;
-  /* 上の要素から文字1つ分くらいの余白を追加 */
 }
 
 .btn-danger:hover {
@@ -281,6 +345,18 @@ body.register {
   background: #ffffff;
   padding: 10px;
   cursor: pointer;
+}
+
+textarea.form-control {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  box-shadow: none;
+  resize: none;
+  /* サイズ変更も禁止するなら */
+  color: #333;
+  /* テキスト色は背景に合わせて調整 */
+  font-size: 16px;
 }
 
 .form-group {
@@ -465,11 +541,18 @@ body.register {
 
 .div-line {
   height: 6px;
-  background-color: #ccc;
+  background-color: rgba(108, 108, 108, 0.2);
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: -20%;
-  margin-right: 0%;
+}
+
+.div-line2 {
+  height: 2px;
+  background-color: rgba(108, 108, 108, 0.2);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: -20%;
 }
 
 .user-row {
