@@ -54,10 +54,11 @@
                                 </li>
                             @endif
                         @else
+                            <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                    <img src="{{ Auth::user()->icon_image ? asset('storage/' . Auth::user()->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 30px;">
+                                    {{ Auth::user()->name }} さん
+                                    <span class="dropdown-line"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -78,6 +79,7 @@
                                     </form>
                                 </div>
                             </li>
+                            <img src="{{ Auth::user()->icon_image ? asset('storage/' . Auth::user()->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="rounded-circle" style="height: 30px;">
                         @endguest
                     </ul>
                 </div>

@@ -1,8 +1,3 @@
-body {
-  background-color: #f8f9fa;
-  /* 通常ページの背景（デフォルトカラー） */
-}
-
 body.login,
 body.register {
   background: linear-gradient(to bottom, #3E4865 60%, #D05E45 100%);
@@ -20,6 +15,89 @@ body.register {
 .nav-link,
 .nav-link.active {
   color: #ffffff !important;
+}
+
+.dropdown {
+  margin-right: 10px;
+}
+
+.dropdown-toggle .dropdown-line {
+  /* ▼潰し */
+  position: absolute;
+  height: 1.0rem;
+  width: 1.0rem;
+  background-color: #3E4865;
+  content: '';
+  cursor: pointer;
+  z-index: 9999;
+  top: 30%;
+  left: 85%;
+}
+
+.dropdown-toggle .dropdown-line::before {
+  /* 右下斜めライン */
+  position: absolute;
+  height: 0.1rem;
+  width: 0.9rem;
+  background-color: #FFFFFF;
+  content: '';
+  cursor: pointer;
+  z-index: 9999;
+  transform: rotate(60deg);
+  top: 45%;
+  left: 0%;
+}
+
+.dropdown-toggle .dropdown-line::after {
+  /* 左下斜めライン */
+  position: absolute;
+  height: 0.1rem;
+  width: 0.9rem;
+  background-color: #FFFFFF;
+  content: '';
+  cursor: pointer;
+  z-index: 9999;
+  transform: rotate(120deg);
+  top: 45%;
+  left: 42%;
+}
+
+
+.dropdown-toggle.show .dropdown-line::before {
+  /* 右上斜めライン */
+  transform: rotate(-60deg);
+}
+
+.dropdown-toggle.show .dropdown-line::after {
+  /* 左上斜めライン */
+  transform: rotate(60deg);
+}
+
+/* ドロップダウンメニュー全体 */
+.dropdown-menu {
+  width: 180px;
+  border: 1px solid #6c6c6c;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* 各メニュー項目 */
+.dropdown-menu .dropdown-item {
+  padding: 12px 0;
+  color: #6c6c6c;
+  text-align: center;
+  border-bottom: 1px solid #6c6c6c;
+}
+
+/* 最後の項目の下線を削除 */
+.dropdown-menu .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+/* ホバー時 */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #D05E45;
+  color: #FFFFFF;
 }
 
 .layout-container {
@@ -348,15 +426,15 @@ body.register {
 }
 
 textarea.form-control {
-  border: none;
   outline: none;
   background-color: transparent;
   box-shadow: none;
   resize: none;
   /* サイズ変更も禁止するなら */
-  color: #333;
+  color: #6c6c6c;
   /* テキスト色は背景に合わせて調整 */
-  font-size: 16px;
+  margin: 16px;
+  font-size: 20px;
 }
 
 .form-group {
@@ -464,9 +542,9 @@ textarea.form-control {
   width: 150px;
   margin-right: auto;
   /* 右側の余白を自動調整し、左端へ */
-  margin-top: auto;
-  margin-bottom: 10px;
-  /* 右と上下それぞれに余白を追加 */
+  margin-top: 50%;
+  margin-bottom: auto;
+  /* 上下それぞれに余白を追加 */
 }
 
 .profile-item2 .btn-unfollow {
@@ -479,7 +557,7 @@ textarea.form-control {
   /* 右側の余白を自動調整し、左端へ */
   margin-top: 50%;
   margin-bottom: auto;
-  /* 右と上下それぞれに余白を追加 */
+  /* 上下それぞれに余白を追加 */
 }
 
 .profile-item2 .btn-unfollow:hover {
@@ -492,7 +570,7 @@ textarea.form-control {
   /* 右側の余白を自動調整し、左端へ */
   margin-top: 50%;
   margin-bottom: auto;
-  /* 右と上下それぞれに余白を追加 */
+  /* 上下それぞれに余白を追加 */
 }
 
 .value.username {

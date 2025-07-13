@@ -35,7 +35,7 @@
       <div class="post-card">
         <div class="post-header">
         @if(auth()->id() === $post->user_id)
-        <a href="{{ route('myProfile') }}">
+          <a href="{{ route('myProfile') }}">
             <img src="{{ $post->user->icon_image ? asset('storage/' . $post->user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="user-icon">
           </a>
 
@@ -44,7 +44,7 @@
             <img src="{{ $post->user->icon_image ? asset('storage/' . $post->user->icon_image) : asset('images/dawn.png') }}" alt="プロフィール画像" class="user-icon">
           </a>
 
-          @endif
+        @endif
 
           <div class="post-meta">
             <span class="post-user">{{ $post->user->name }}</span>

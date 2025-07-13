@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth; // 追加
 use App\Models\User;
+use App\Models\Post;
 
 class UsersController extends Controller
 {
@@ -108,12 +109,11 @@ class UsersController extends Controller
         $user = Auth::user(); // ログイン中のユーザー情報を取得
         $followings = $user->followings; // フォローしてるユーザー一覧
 
-        $posts = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合
-            ->select('posts.*', 'users.name as user_name', 'users.icon_image') // ユーザー名とユーザー画像を取得
-            ->get();
+        $posts = Post::with('user')  // 投稿に紐づくユーザーを取得
+                     ->orderBy('created_at', 'desc')
+                     ->get();
 
-        return view('users.followList', compact('followings','posts')); // `$followings`と$posts をビューに渡す
+        return view('users.followList', compact('user','followings','posts')); // `$userと`$followings`と$posts をビューに渡す
     }
 
     public function followerList() //フォロワーリスト画面
@@ -121,12 +121,11 @@ class UsersController extends Controller
         $user = Auth::user(); // ログイン中のユーザー情報を取得
         $followings = $user->followers; // フォローしてくれているユーザー一覧
 
-        $posts = DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id') // usersテーブルと結合
-            ->select('posts.*', 'users.name as user_name', 'users.icon_image') // ユーザー名とユーザー画像を取得
-            ->get();
+        $posts = Post::with('user')  // 投稿に紐づくユーザーを取得
+                     ->orderBy('created_at', 'desc')
+                     ->get();
 
-        return view('users.followerList', compact('followings','posts')); // `$followings`と$posts をビューに渡す
+        return view('users.followerList', compact('user','followings','posts')); // `$userと`$followings`と$posts をビューに渡す
     }
 
     public function showProfile($id) //ユーザープロフィール画面
