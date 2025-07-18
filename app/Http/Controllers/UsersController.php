@@ -108,8 +108,10 @@ class UsersController extends Controller
     {
         $user = Auth::user(); // ログイン中のユーザー情報を取得
         $followings = $user->followings; // フォローしてるユーザー一覧
+        $followingIds = $followings->pluck('id'); // フォローしてるユーザーのIDを抽出
 
         $posts = Post::with('user')  // 投稿に紐づくユーザーを取得
+                     ->whereIn('user_id', $followingIds) // $followingIdsにまとめたidの投稿を取得
                      ->orderBy('created_at', 'desc')
                      ->get();
 
@@ -120,8 +122,10 @@ class UsersController extends Controller
     {
         $user = Auth::user(); // ログイン中のユーザー情報を取得
         $followings = $user->followers; // フォローしてくれているユーザー一覧
+        $followingIds = $followings->pluck('id'); // フォローしてくれているユーザーのIDを抽出
 
         $posts = Post::with('user')  // 投稿に紐づくユーザーを取得
+                     ->whereIn('user_id', $followingIds) // $followingIdsにまとめたidの投稿を取得
                      ->orderBy('created_at', 'desc')
                      ->get();
 

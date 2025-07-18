@@ -26,8 +26,11 @@ class PostsController extends Controller
     public function index() //投稿一覧
     {
         $user = Auth::user(); // ログイン中のユーザー情報を取得
+        $followings = $user->followings; // フォローしてるユーザー一覧
+        $userIds = $followings->pluck('id')->push($user->id); // ログインユーザーのIDとフォローしてるユーザーのIDをまとめる(pushで自身のIDも追加)
 
         $posts = Post::with('user')  // 投稿に紐づくユーザーを取得
+                     ->whereIn('user_id', $userIds) // $userIdsにまとめたidの投稿を取得
                      ->orderBy('created_at', 'desc')
                      ->get();
 
